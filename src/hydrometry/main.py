@@ -17,7 +17,7 @@ def main():
 
     # This class prepares the data directories, data classes, etc., and
     # if external = True, the latest raw hydrometry references data will be downloaded
-    setting = src.hydrometry.setting.Setting(external=True).exc()
+    setting = src.hydrometry.setting.Setting(external=False).exc()
 
     # The Hydrometry References
     gazetteer: pd.DataFrame
