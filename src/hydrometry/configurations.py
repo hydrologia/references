@@ -23,7 +23,7 @@ class Configurations:
         """
 
         # The expected location of the YAML
-        self.__path = os.path.join(os.getcwd(), 'resources', 'hydrometry', 'configurations.yaml')
+        self.__path = os.path.join(os.getcwd(), 'src', 'hydrometry', 'configurations.yaml')
 
         # Get the stream of YAML objects as soon as this class is instantiated
         # A stream of objects wherein each object has the API details for a data set
