@@ -28,8 +28,7 @@ class Structure:
         :return:
         """
 
-        nodes = [{'station_id': station_id, 'measure': measurement['@id']}
-                 for measurement in measures]
+        nodes = [{'station_id': station_id, 'measure': measurement['@id']} for measurement in measures]
 
         return pd.DataFrame.from_records(nodes)
 
@@ -63,8 +62,7 @@ class Structure:
         :return:
         """
 
-        return [os.path.basename(list(node.values())[0])
-                for node in nodes]
+        return [os.path.basename(list(node.values())[0]) for node in nodes]
 
     @staticmethod
     def __decompose_types(blob: pd.DataFrame):
@@ -88,9 +86,15 @@ class Structure:
         return data
 
     @staticmethod
-    def __replace(x: str, y: str) -> str:
+    def __replace(basename: str, station_id: str) -> str:
+        """
 
-        return x.replace(y, '')
+        :param basename:
+        :param station_id:
+        :return:
+        """
+
+        return basename.replace(station_id, '')
 
     def exc(self, blob: pd.DataFrame) -> pd.DataFrame:
         """
