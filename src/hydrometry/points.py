@@ -28,7 +28,7 @@ class Points:
         self.__blob.loc[:, 'river_name'] = self.__blob['river_name'].str.title()
 
     @staticmethod
-    def __reshape_measures(blob: pd.DataFrame, fields: list) -> pd.DataFrame:
+    def __reshape_types(blob: pd.DataFrame, fields: list) -> pd.DataFrame:
         """
 
         :param blob:
@@ -51,7 +51,7 @@ class Points:
 
         return sources
 
-    def measures(self) -> (pd.DataFrame, pd.DataFrame):
+    def types(self) -> (pd.DataFrame, pd.DataFrame):
         """
 
         :return:
@@ -59,14 +59,14 @@ class Points:
 
         fields = ['station_id', 'station_guid', 'easting', 'northing', 'latitude', 'longitude', 'catchment_area',
                   'is_station', 'is_groundwater', 'is_rainfall_station', 'is_sampling_location', 'is_integrity_station',
-                  'date_opened', 'date_closed', 'measure']
+                  'date_opened', 'date_closed', 'endpoint', 'basename', 'variable']
 
         # Excerpt
         instances = src.hydrometry.structure.Structure().exc(blob=self.__blob.copy())
         instances = instances.copy()[fields]
 
         # Alternative
-        sources = self.__reshape_measures(blob=instances, fields=fields)
+        sources = self.__reshape_types(blob=instances, fields=fields)
 
         return instances, sources
 

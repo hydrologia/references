@@ -100,7 +100,7 @@ class Interface:
         # Gazetteer & Inventory of Measures
         points = src.hydrometry.points.Points(blob=excerpt)
         gazetteer = points.gazetteer()
-        instances, sources = points.measures()
+        instances, sources = points.types()
 
         self.__streams.write(blob=gazetteer, path=os.path.join(self.__storage, 'gazetteer.csv'))
         self.__streams.write(blob=sources, path=os.path.join(self.__storage, 'sources.csv'))
