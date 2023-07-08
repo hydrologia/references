@@ -26,7 +26,7 @@ class Fields:
 
         values = ['station_id', 'station_name', 'type', 'easting', 'northing', 'latitude', 'longitude', 'river_name',
                   'station_guid', 'wiski_id', 'river_level_tool_id', 'catchment_area', 'date_opened', 'date_closed',
-                  'rfa_station_id', 'station_status', 'station_status_reason', 'measures']
+                  'rfa_station_id', 'station_status', 'station_status_reason', 'endpoints']
 
         types = [str, str, str, np.int64, np.int64, np.float64, np.float64, str,
                  str, str, str, np.float64, datetime.date, datetime.date,
