@@ -94,7 +94,9 @@ class Structure:
         :return:
         """
 
-        return basename.replace(station_id, '')
+        text = basename.replace(station_id, '').lstrip('-')
+
+        return text
 
     def exc(self, blob: pd.DataFrame) -> pd.DataFrame:
         """
@@ -116,6 +118,6 @@ class Structure:
         basename = np.vectorize(pyfunc=os.path.basename)
         data.loc[:, 'basename'] = basename(data['measure'].to_numpy())
         variable = np.vectorize(pyfunc=self.__replace)
-        data.loc[:, 'variable'] = variable(x=data['basename'].to_numpy(), y=data['station_id'].to_numpy())
+        data.loc[:, 'variable'] = variable(basename=data['basename'].to_numpy(), station_id=data['station_id'].to_numpy())
 
         return data
