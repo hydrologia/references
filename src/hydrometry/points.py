@@ -59,7 +59,7 @@ class Points:
 
         fields = ['station_id', 'station_guid', 'easting', 'northing', 'latitude', 'longitude', 'catchment_area',
                   'is_station', 'is_groundwater', 'is_rainfall_station', 'is_sampling_location', 'is_integrity_station',
-                  'date_opened', 'date_closed', 'measure']
+                  'date_opened', 'date_closed', 'measure', 'basename', 'variable']
 
         # Excerpt
         instances = src.hydrometry.structure.Structure().exc(blob=self.__blob.copy())
