@@ -4,6 +4,7 @@ structure.py
 import os
 
 import dask.dataframe
+import numpy as np
 import pandas as pd
 
 
@@ -86,6 +87,11 @@ class Structure:
 
         return data
 
+    @staticmethod
+    def __replace(x: str, y: str) -> str:
+
+        return x.replace(y, '')
+
     def exc(self, blob: pd.DataFrame) -> pd.DataFrame:
         """
 
@@ -101,5 +107,11 @@ class Structure:
 
         # The measures
         data = self.__decompose_measures(blob=data)
+
+        # Extra
+        basename = np.vectorize(pyfunc=os.path.basename)
+        data.loc[:, 'basename'] = basename(data['measure'].to_numpy())
+        variable = np.vectorize(pyfunc=self.__replace)
+        data.loc[:, 'variable'] = variable(x=data['basename'].to_numpy(), y=data['station_id'].to_numpy())
 
         return data
